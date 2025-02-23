@@ -34,9 +34,9 @@ namespace C_mmoPart2.Section01
                 //렌더링
                 Console.SetCursorPosition(0, 0);
 
-                for(int i =0; i<25; i++)
+                for (int i = 0; i < 25; i++)
                 {
-                    for(int j = 0; j<25; j++)
+                    for (int j = 0; j < 25; j++)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.Write(CIRCLE);
