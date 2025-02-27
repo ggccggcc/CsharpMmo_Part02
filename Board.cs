@@ -30,18 +30,28 @@ namespace C_mmoPart2
             _size = size;
 
 
+            GenerateByBinaryTree();
+
+
+           
+
+
+        }
+
+        void GenerateByBinaryTree()
+        {
             // 길을 다 막아버리는 작업
             for (int y = 0; y < _size; y++)
             {
                 for (int x = 0; x < _size; x++)
                 {
                     //if (x == 0 || x == _size - 1 || y == 0 || y == _size - 1)
-                    if(x % 2 == 0 || y % 2 == 0)
-                     _tile[y, x] = TileType.Wall;
+                    if (x % 2 == 0 || y % 2 == 0)
+                        _tile[y, x] = TileType.Wall;
 
                     else
                         _tile[y, x] = TileType.Empty;
-                    
+
                 }
             }
 
@@ -56,22 +66,36 @@ namespace C_mmoPart2
                     if (x % 2 == 0 || y % 2 == 0)
                         continue;
 
-                        if(rand.Next(0, 2) == 0 )
-                        {
-                            _tile[y, x+1] = TileType.Empty;
-                        }
-                        else
-                        {
-                        _tile[y+1, x] = TileType.Empty;
+                    if (y == _size - 2 && x == _size - 2)
+                        continue;
+
+                    if (y == _size - 2)
+                    {
+                        _tile[y, x + 1] = TileType.Empty;
+                        continue;
+                    }
+
+                    if (x == _size - 2)
+                    {
+                        _tile[y + 1, x] = TileType.Empty;
+                        continue;
+                    }
+
+                    if (rand.Next(0, 2) == 0)
+                    {
+                        _tile[y, x + 1] = TileType.Empty;
+                    }
+                    else
+                    {
+                        _tile[y + 1, x] = TileType.Empty;
 
                     }
 
 
                 }
             }
-
-
         }
+
             public void Render()
             {
             ConsoleColor prevColor = Console.ForegroundColor;
